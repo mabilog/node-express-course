@@ -7,7 +7,7 @@ require('dotenv').config();
 const notFound = require('./middleware/not-found.js')
 const errorHandlerMiddleware = require('./middleware/error-handler.js')
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 // middleware
 app.use(express.static('./public'))
