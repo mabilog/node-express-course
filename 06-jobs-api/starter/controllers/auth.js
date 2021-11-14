@@ -19,14 +19,14 @@ const login = async(req, res) => {
   const user = await User.findOne({ email })
   
   if(!user) {
-    throw new UnauthenticatedError('Invalid User')
+    throw new UnauthenticatedError('Invalid Credentials')
   }
 
   // comparing password with bcryptjs
   const isPasswordCorrect = await user.comparePassword(password)
   console.log(isPasswordCorrect)
   if(!isPasswordCorrect) {
-    throw new UnauthenticatedError('Invalid password')
+    throw new UnauthenticatedError('Invalid Credentials')
   }
   
   const token = user.createJWT();
